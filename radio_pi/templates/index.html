@@ -1,0 +1,39 @@
+<!-- Includes -->
+{% include 'default.html' %}
+{% include 'nav.html' %}
+
+{% block content %}
+<body>
+<div class="container-cs">
+    <h1 class="container-cs">Web Radio</h1>
+</div>
+    <hr style="width: 90%;">
+<div class="container-fluid">
+    <div class="row">
+        <div class="content col-md-4">
+            <h3>Spelas Just nu</h3>
+            <br>
+            <br>
+            <img src="{{ current_station.image }}">
+        </div>
+            <div class="current col-md-6">
+                <form method="post" action="{{ url_for('change_channel') }}">
+                    <br><br>
+                    <div class="music-list">
+                        {% for k, v in data.items() %}
+                        <div class="radio">
+                          <label><input type="radio" id="{{ v }}" value="{{ v }}" name="stations"> {{ k }}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <br><br>
+                    <button type="submit" class="btn btn-primary btn-lg">Spara</button>
+                </form>
+            </div>
+    </div>
+</div>
+</body>
+{% endblock %}
+
+
+

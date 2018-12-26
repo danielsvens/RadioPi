@@ -1,0 +1,103 @@
+/* Styles Css
+ * @ Author: Daniel Svens
+*/
+
+body {
+    background: #24435A;
+    margin: auto;
+}
+
+.nav-links {
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    font-family: 'Abel', sans-serif;
+}
+
+.side-ul {
+    padding: 0;
+}
+
+.nav-links:hover {
+    text-decoration: none;
+    color: #009900;
+}
+
+h1 {
+    font-family: 'Questrial', sans-serif;
+    display: inline;
+    padding: 10px;
+    color: white;
+    font-size: 50px;
+}
+
+.color-black {
+    color: black;
+}
+
+.ba-nav {
+    display: block;
+    background-color: #0A1D2C;
+    height: 43px;
+    text-align: left;
+}
+
+.ba-nav .ul {
+    width: 100%;
+    list-style-type: none;
+    margin: auto;
+    padding: 20;
+}
+
+.ba-nav ul li {
+    text-decoration: none;
+    list-style-type: none;
+    display: inline;
+    padding: 20px;
+}
+
+.ba-nav .navigation {
+    display: inline-block;
+}
+
+.ba-wrapper {
+    width: 100%;
+    text-decoration: none;
+    padding-left: 5px;
+    padding: 12px;
+    color: white;
+}
+
+.container-cs {
+    padding-top: 40px;
+    padding-left: 40px;
+}
+
+.content {
+    padding: 20px;
+    left: 80px;
+}
+
+.current {
+    padding: 20px;
+    padding-top: 50px;
+    left: 250px;
+    font-size: 20px;
+}
+
+.music-list {
+    border: 1px solid black;
+    border-radius: 4px;
+    /* background: darkgray; */
+    top: 300px;
+    padding: 40px;
+
+}
+
+div button {
+    float: right;
+}
+
+.inline {
+    display: inline;
+}
