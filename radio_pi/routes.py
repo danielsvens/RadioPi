@@ -1,5 +1,4 @@
 from radio_pi import app, db
-from sqlalchemy import update
 from flask import render_template, request, redirect, url_for
 from radio_pi import radio
 from radio_pi.models import Radio

@@ -35,11 +35,19 @@ radio_p3 = Radio(endpoint='http://sverigesradio.se/topsy/direkt/srapi/164.mp3',
                  last_modified=datetime.now()
                  )
 
-classic = Radio(endpoint='https://cdn-web.tunein.com/assets/media/blank.mp3',
-                 station='Sveriges Radio p3',
+classic = Radio(endpoint='https://streaming.radio.co/sfbb7cdc28/listen',
+                 station='Radio 10 Classic',
                  short='P10Classic',
                  active_station=1,
-                 image='https://cdn-radiotime-logos.tunein.com/s130799q.png',
+                 image='https://cdn-radiotime-logos.tunein.com/s114297q.png',
+                 last_modified=datetime.now()
+                 )
+
+worship = Radio(endpoint='https://s2.radio.co/sadf67c8ed/listen',
+                 station='Radio 10 Worship',
+                 short='P10Worship',
+                 active_station=0,
+                 image='https://cdn-radiotime-logos.tunein.com/s114297q.png',
                  last_modified=datetime.now()
                  )
 
@@ -48,6 +56,8 @@ print('Adding data to tables')
 db.session.add(radio_p1)
 db.session.add(radio_p2)
 db.session.add(radio_p3)
+db.session.add(classic)
+db.session.add(worship)
 db.session.commit()
 db.session.close()
 print('Done')
