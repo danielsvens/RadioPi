@@ -11,7 +11,7 @@ db.drop_all()
 print('Creating tables')
 db.create_all()
 
-radio_p1 = Radio(endpoint='https://sverigesradio.se/topsy/direkt/srapi/132.mp3',
+radio_p1 = Radio(endpoint='http://sverigesradio.se/topsy/direkt/srapi/132.mp3',
                  station='Sveriges Radio p1',
                  short='P1',
                  active_station=0,
@@ -19,7 +19,7 @@ radio_p1 = Radio(endpoint='https://sverigesradio.se/topsy/direkt/srapi/132.mp3',
                  last_modified=datetime.now()
                  )
 
-radio_p2 = Radio(endpoint='https://sverigesradio.se/topsy/direkt/srapi/163.mp3',
+radio_p2 = Radio(endpoint='http://sverigesradio.se/topsy/direkt/srapi/163.mp3',
                  station='Sveriges Radio p2',
                  short='P2',
                  active_station=1,
@@ -27,7 +27,7 @@ radio_p2 = Radio(endpoint='https://sverigesradio.se/topsy/direkt/srapi/163.mp3',
                  last_modified=datetime.now()
                  )
 
-radio_p3 = Radio(endpoint='https://sverigesradio.se/topsy/direkt/srapi/164.mp3',
+radio_p3 = Radio(endpoint='http://sverigesradio.se/topsy/direkt/srapi/164.mp3',
                  station='Sveriges Radio p3',
                  short='P3',
                  active_station=0,
