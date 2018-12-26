@@ -1,17 +1,16 @@
 import vlc
 from radio_pi.models import Radio
+import time
 
 
 class RadioStream:
 
     def __init__(self):
+        self.uri = None
+        self.stream = None
+
         try:
-            query = Radio.query.filter_by(active_station=1).first()
-            self.uri = str(query.endpoint)
-            print(query.station)
-
-            self.stream = vlc.MediaPlayer(self.uri)
-
+            self.stream = self.start_radio()
         except Exception as e:
 
             print("Uri Verkar inte fungera, Testar default p2 musik")
@@ -26,8 +25,21 @@ class RadioStream:
     def stop(self):
         return self.stream.stop()
 
-    def change_song(self, uri):
+    def change_station(self, uri):
         self.stop()
         self.stream = vlc.MediaPlayer(uri)
         self.play()
+
+    def retry(self):
+        time.sleep(5)
+        self.stream = self.start_radio()
+        self.play()
+
+    def start_radio(self):
+        query = Radio.query.filter_by(active_station=1).first()
+        self.uri = str(query.endpoint)
+        print(query.station)
+
+        return vlc.MediaPlayer(self.uri)
+
 

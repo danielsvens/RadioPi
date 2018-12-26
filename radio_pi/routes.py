@@ -22,5 +22,5 @@ def change_channel():
     db.session.query(Radio).filter(Radio.active_station == 1).update({Radio.active_station: 0})
     db.session.query(Radio).filter(Radio.short == id).update({Radio.active_station: 1})
     db.session.commit()
-    radio.change_song(station[0])
+    radio.change_station(station[0])
     return redirect(url_for('index'))

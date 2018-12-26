@@ -9,6 +9,10 @@ db = SQLAlchemy(app)
 from radio_pi.streamer import RadioStream
 
 radio = RadioStream()
-radio.play()
+try:
+    radio.play()
+except Exception as e:
+    print(str(e))
+    radio.retry()
 
 from radio_pi import routes
