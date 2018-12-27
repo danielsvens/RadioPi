@@ -10,7 +10,7 @@ class RadioStream:
         self.stream = None
 
         try:
-            self.stream = self.start_radio()
+            self.stream = self.setup_radio()
         except Exception as e:
             print('Något gick fel')
             print(str(e))
@@ -24,15 +24,15 @@ class RadioStream:
     def change_station(self, uri):
         self.stop()
         if not self.is_playing():
-            self.stream = self.start_radio(uri)
+            self.stream = self.setup_radio(uri)
             self.play()
 
     def retry(self):
         print('Något gick fel, vi testar igen')
-        self.stream = self.start_radio()
+        self.stream = self.setup_radio()
         self.play()
 
-    def start_radio(self, *uri):
+    def setup_radio(self, *uri):
         if uri:
             self.uri = uri[0]
         else:
