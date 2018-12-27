@@ -12,7 +12,6 @@ def index():
     for k, v in station_list:
         data.update({k: v})
     current_station = Radio.query.filter_by(active_station=1).first()
-    print(current_station)
     return render_template('index.html', current_station=current_station, data=data)
 
 
