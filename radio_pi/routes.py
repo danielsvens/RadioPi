@@ -1,5 +1,6 @@
-from radio_pi import app, db
 from flask import render_template, request, redirect, url_for
+
+from radio_pi import app, db
 from radio_pi import radio
 from radio_pi.models import Radio
 
@@ -11,6 +12,7 @@ def index():
     for k, v in station_list:
         data.update({k: v})
     current_station = Radio.query.filter_by(active_station=1).first()
+    print(current_station)
     return render_template('index.html', current_station=current_station, data=data)
 
 

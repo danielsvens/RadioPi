@@ -89,13 +89,14 @@ h1 {
     border: 1px solid black;
     border-radius: 4px;
     /* background: darkgray; */
-    top: 300px;
     padding: 40px;
 
 }
 
 div button {
     float: right;
+    background-color: #0A1D2C !important;
+    border-color: #0A1D2C !important;
 }
 
 .inline {
