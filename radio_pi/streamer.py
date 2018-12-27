@@ -7,13 +7,7 @@ class RadioStream:
 
     def __init__(self):
         self.uri = None
-        self.stream = None
-
-        try:
-            self.stream = self.setup_radio()
-        except Exception as e:
-            print('Något gick fel')
-            print(str(e))
+        self.stream = self.setup_radio()
 
     def play(self):
         return self.stream.play()
@@ -28,7 +22,7 @@ class RadioStream:
             self.play()
 
     def retry(self):
-        print('Något gick fel, vi testar igen')
+        print('Something went wrong, lets try again.')
         self.stream = self.setup_radio()
         self.play()
 
@@ -38,6 +32,9 @@ class RadioStream:
         else:
             query = Radio.query.filter_by(active_station=1).first()
             self.uri = str(query.endpoint)
+
+            if self.uri is None:
+                return None
 
         return vlc.MediaPlayer(self.uri)
 

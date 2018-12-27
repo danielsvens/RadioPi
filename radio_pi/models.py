@@ -1,5 +1,6 @@
-from radio_pi import db
 from datetime import datetime
+
+from radio_pi import db
 
 
 class Radio(db.Model):
@@ -14,3 +15,8 @@ class Radio(db.Model):
     def __repr__(self):
         return '<{}: {}>'.format(self.__class__.__name__, self.station)
 
+    def get_id(self):
+        return self.id
+
+    def set_id(self, id):
+        self.id = id

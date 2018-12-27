@@ -16,7 +16,11 @@ db = SQLAlchemy(app)
 from radio_pi.streamer import RadioStream
 
 radio = RadioStream()
-radio.play()
+
+try:
+    radio.play()
+except Exception as e:
+    print(str(e))
 
 scheduler = APScheduler()
 scheduler.init_app(app)
