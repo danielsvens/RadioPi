@@ -1,6 +1,6 @@
 import vlc
+
 from radio_pi.models import Radio
-import time
 
 
 class RadioStream:
@@ -12,11 +12,7 @@ class RadioStream:
         try:
             self.stream = self.start_radio()
         except Exception as e:
-
-            print("Uri Verkar inte fungera, Testar default p2 musik")
-            self.stream = vlc.MediaPlayer('http://sverigesradio.se/topsy/direkt/srapi/163.mp3')
-
-            print('\nStack Trace\n')
+            print('Något gick fel')
             print(str(e))
 
     def play(self):
@@ -27,19 +23,27 @@ class RadioStream:
 
     def change_station(self, uri):
         self.stop()
-        self.stream = vlc.MediaPlayer(uri)
-        self.play()
+        if not self.is_playing():
+            self.stream = self.start_radio(uri)
+            self.play()
 
     def retry(self):
-        time.sleep(5)
+        print('Något gick fel, vi testar igen')
         self.stream = self.start_radio()
         self.play()
 
-    def start_radio(self):
-        query = Radio.query.filter_by(active_station=1).first()
-        self.uri = str(query.endpoint)
-        print(query.station)
+    def start_radio(self, *uri):
+        if uri:
+            self.uri = uri[0]
+        else:
+            query = Radio.query.filter_by(active_station=1).first()
+            self.uri = str(query.endpoint)
 
         return vlc.MediaPlayer(self.uri)
 
+    def is_playing(self):
+        return self.stream.is_playing()
 
+    def status(self):
+        if not self.is_playing():
+            self.retry()
