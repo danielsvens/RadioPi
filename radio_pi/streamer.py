@@ -39,8 +39,7 @@ class RadioStream:
             query = Radio.query.filter_by(active_station=1).first()
             self.uri = str(query.endpoint)
 
-        instance = vlc.Instance()
-        return instance.media_player_new(self.uri)
+        return vlc.MediaPlayer(self.uri)
 
     def is_playing(self):
         return self.stream.is_playing()
