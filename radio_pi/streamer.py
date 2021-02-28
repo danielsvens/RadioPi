@@ -47,3 +47,6 @@ class RadioStream:
     def status(self):
         if not self.is_playing():
             self.retry()
+
+    def set_volume(self, v):
+        self.stream.audio_set_volume(int(v))
